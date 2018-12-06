@@ -1,0 +1,24 @@
+{
+  "name": "violinist-dev/symfony-cloud-security-checker",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eirik S. Morland",
+      "email": "eirik@morland.no"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Violinist\\SymfonyCloudSecurityChecker\\": "src"
+    }
+  },
+  "require": {
+    "symfony/process": "^2.7 || ^3.0 || ^4.0"
+  },
+  "extra": {
+    "class": "Violinist\\CachedRemoteFilesystem\\EventSubscriber"
+  },
+  "require-dev": {
+    "composer/composer": "dev-master"
+  }
+}
