@@ -15,7 +15,18 @@ class SecurityChecker
 
     public function checkDirectory($dir)
     {
-        $command = sprintf('symfony security:check --dir=%s --format=json', $dir);
+        // Start with putting a silence file in the home directory. This is because otherwise the command might want to
+        // complain about updating the symfony command.
+        if (getenv('HOME')) {
+            $sdir = sprintf('%s/.symfony/autoupdate', getenv('HOME'));
+            $command = sprintf('mkdir -p %s', $sdir);
+            $process = new Process($command);
+            $process->run();
+            $command = sprintf('touch %s/silence', $sdir);
+            $process = new Process($command);
+            $process->run();
+        }
+        $command = sprintf('/tmp/symfony security:check --dir=%s --format=json', $dir);
         $process = new Process($command);
         $process->run();
         $string = $process->getOutput();
