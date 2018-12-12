@@ -26,7 +26,7 @@ class SecurityChecker
             $process = new Process($command);
             $process->run();
         }
-        $command = sprintf('/tmp/symfony security:check --dir=%s --format=json', $dir);
+        $command = sprintf('symfony security:check --dir=%s --format=json', $dir);
         $process = new Process($command);
         $process->run();
         $string = $process->getOutput();
