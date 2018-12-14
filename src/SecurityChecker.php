@@ -6,12 +6,7 @@ use Symfony\Component\Process\Process;
 
 class SecurityChecker
 {
-    protected $process;
-
-    public function __construct()
-    {
-
-    }
+    protected $processFactory;
 
     public function checkDirectory($dir)
     {
@@ -20,14 +15,14 @@ class SecurityChecker
         if (getenv('HOME')) {
             $sdir = sprintf('%s/.symfony/autoupdate', getenv('HOME'));
             $command = sprintf('mkdir -p %s', $sdir);
-            $process = new Process($command);
+            $process = $this->getProcess($command);
             $process->run();
             $command = sprintf('touch %s/silence', $sdir);
-            $process = new Process($command);
+            $process = $this->getProcess($command);
             $process->run();
         }
         $command = sprintf('symfony security:check --dir=%s --format=json', $dir);
-        $process = new Process($command);
+        $process = $this->getProcess($command);
         $process->run();
         $string = $process->getOutput();
         if (empty($string)) {
@@ -37,5 +32,29 @@ class SecurityChecker
             throw new \Exception('Invalid JSON found from parsing the security check data');
         }
         return $json;
+    }
+
+    protected function getProcess($command)
+    {
+        return $this->getProcessFactory()->getProcess($command);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProcessFactory()
+    {
+        if (!isset($this->processFactory)) {
+            $this->processFactory = new ProcessFactory();
+        }
+        return $this->processFactory;
+    }
+
+    /**
+     * @param mixed $processFactory
+     */
+    public function setProcessFactory($processFactory)
+    {
+        $this->processFactory = $processFactory;
     }
 }
