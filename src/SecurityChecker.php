@@ -33,7 +33,8 @@ class SecurityChecker
         if (empty($string)) {
             throw new \Exception('No output received from symfony command. This could mean you do not have the symfony command available. This is the stderr: ' . $process->getErrorOutput());
         }
-        if (!$json = @json_decode($string, true)) {
+        $json = @json_decode($string, true);
+        if (!is_array($json)) {
             throw new \Exception('Invalid JSON found from parsing the security check data');
         }
         return $json;
