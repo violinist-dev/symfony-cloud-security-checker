@@ -60,5 +60,4 @@ class UnitTest extends TestCase
         $this->assertTrue($factory instanceof ProcessFactory);
         $this->assertTrue($factory->getProcess('true') instanceof Process);
     }
-
 }
