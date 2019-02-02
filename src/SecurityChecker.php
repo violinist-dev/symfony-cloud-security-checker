@@ -6,6 +6,9 @@ use Symfony\Component\Process\Process;
 
 class SecurityChecker
 {
+
+    protected $symfonyCommand = 'symfony';
+
     protected $processFactory;
 
     public function checkDirectory($dir)
@@ -21,7 +24,7 @@ class SecurityChecker
             $process = $this->getProcess($command);
             $process->run();
         }
-        $command = sprintf('symfony security:check --dir=%s --format=json', $dir);
+        $command = sprintf('%s security:check --dir=%s --format=json', $this->symfonyCommand, $dir);
         $process = $this->getProcess($command);
         $process->run();
         $string = $process->getOutput();
