@@ -1,4 +1,5 @@
 .idea
 composer.lock
+!/tests/assets/projects/*/composer.lock
 vendor
 data
