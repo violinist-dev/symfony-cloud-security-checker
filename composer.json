@@ -1,5 +1,6 @@
 {
   "name": "violinist-dev/symfony-cloud-security-checker",
+  "description": "A wrapper for the symfony cli security checker",
   "license": "MIT",
   "authors": [
     {
