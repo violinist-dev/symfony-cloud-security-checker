@@ -5,7 +5,7 @@ namespace Violinist\SymfonyCloudSecurityChecker;
 use Symfony\Component\Process\Process;
 use Violinist\ProcessFactory\ProcessFactoryInterface;
 
-class ProcessFactory
+class ProcessFactory implements ProcessFactoryInterface
 {
     public function getProcess(array $commandline, $cwd = null, array $env = null, $input = null, $timeout = 60, array $options = null)
     {
