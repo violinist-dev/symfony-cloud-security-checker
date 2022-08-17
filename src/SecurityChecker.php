@@ -17,14 +17,14 @@ class SecurityChecker
         // complain about updating the symfony command.
         if (getenv('HOME')) {
             $sdir = sprintf('%s/.symfony/autoupdate', getenv('HOME'));
-            $command = sprintf('mkdir -p %s', $sdir);
+            $command = ['mkdir', '-p', $sdir];
             $process = $this->getProcess($command);
             $process->run();
-            $command = sprintf('touch %s/silence', $sdir);
+            $command = ['touch', sprintf('%s/silence', $sdir)];
             $process = $this->getProcess($command);
             $process->run();
         }
-        $command = sprintf('%s security:check --dir=%s --format=json', $this->symfonyCommand, $dir);
+        $command = [$this->symfonyCommand, 'security:check', sprintf('--dir=%s', $dir), '--format=json'];
         $process = $this->getProcess($command);
         $process->run();
         $string = $process->getOutput();
@@ -38,7 +38,7 @@ class SecurityChecker
         return $json;
     }
 
-    protected function getProcess($command)
+    protected function getProcess(array $command)
     {
         return $this->getProcessFactory()->getProcess($command);
     }
