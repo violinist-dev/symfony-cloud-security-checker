@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions:
+        php-version:
           - "7.1"
           - "7.2"
           - "7.3"
@@ -29,7 +29,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: ${{ matrix.php-version }}
 
       - name: Dump composer verson
         run: composer --version
@@ -41,14 +41,14 @@ jobs:
         run: composer --verbose install
 
       - name: Install phpstan if we have to
-        if: matrix.php-versions != 7.1
+        if: matrix.php-version != 7.1
         run: composer require --dev phpstan/phpstan
 
       - name: Run tests
         run: composer test
      
       - name: run phpstan
-        if: matrix.php-versions != 7.1
+        if: matrix.php-version != 7.1
         run: ./vendor/bin/phpstan analyze src tests
 
       - name: Coveralls
