@@ -34,8 +34,6 @@ jobs:
       - name: Dump composer verson
         run: composer --version
 
-      - run: symfony --version
-
       - name: Validate composer.json
         run: composer --verbose validate
 
