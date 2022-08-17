@@ -58,6 +58,6 @@ class UnitTest extends TestCase
         $checker = new SecurityChecker();
         $factory = $checker->getProcessFactory();
         $this->assertTrue($factory instanceof ProcessFactory);
-        $this->assertTrue($factory->getProcess('true') instanceof Process);
+        $this->assertTrue($factory->getProcess(['true']) instanceof Process);
     }
 }
