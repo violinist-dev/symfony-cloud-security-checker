@@ -34,13 +34,15 @@ jobs:
       - name: Dump composer verson
         run: composer --version
 
+      - run: symfony --version
+
       - name: Validate composer.json
         run: composer --verbose validate
 
       - name: Install dependencies
         run: composer --verbose install
 
-      - name: Install patches and phpstan if we have to
+      - name: Install phpstan if we have to
         if: matrix.php-versions != 7.1
         run: composer require --dev phpstan/phpstan
 
