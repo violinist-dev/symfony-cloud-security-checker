@@ -1,5 +1,5 @@
 # symfony-cloud-security-checker
-[![Build Status](https://travis-ci.org/violinist-dev/symfony-cloud-security-checker.svg?branch=master)](https://travis-ci.org/violinist-dev/symfony-cloud-security-checker)
+[![Test](https://github.com/violinist-dev/symfony-cloud-security-checker/actions/workflows/test.yml/badge.svg)](https://github.com/violinist-dev/symfony-cloud-security-checker/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/violinist-dev/symfony-cloud-security-checker/badge.svg?branch=master)](https://coveralls.io/github/violinist-dev/symfony-cloud-security-checker?branch=master)
 [![Violinist enabled](https://img.shields.io/badge/violinist-enabled-brightgreen.svg)](https://violinist.io)
 
