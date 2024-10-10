@@ -20,7 +20,7 @@
   },
   "require": {
     "symfony/process": "^4.0 || ^5.4",
-    "violinist-dev/process-factory": "^2"
+    "violinist-dev/process-factory": "^3"
   },
   "scripts": {
     "test": [
